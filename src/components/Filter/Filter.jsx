@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 
-const Filter = ({allItems}) => {
+const Filter = ({allCarCards}) => {
 
     const [isOpenBrands, setIsOpenBrands] = useState(false);  
     const [isOpenPrice, setIsOpenPrice] = useState(false);  
@@ -25,7 +25,7 @@ const Filter = ({allItems}) => {
         localStorage.setItem('filter', JSON.stringify(filter));
     }
     
-    const filterMakes = allItems.map(item => item.make)
+    const filterMakes = allCarCards.map(item => item.make)
         .filter((make, index, array) => array
         .indexOf(make) === index
     );
@@ -150,25 +150,3 @@ const Filter = ({allItems}) => {
 
 
 export default Filter;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
