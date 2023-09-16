@@ -5,15 +5,18 @@ import { nanoid } from 'nanoid'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import css from './Catalog.module.css'
 import Filter from "components/Filter/Filter.jsx";
+import svg from '../../images/symbol-defs.svg';
 
 
 
 export default function Catalog() {
 
-   const [carCards, setCarCards] = useState([]);
-   const [carCardsPage, setCarCardsPage] = useState([]);
-   const [page, setPage] = useState(1);
-   const [allCarCards, setAllCarCards] = useState([]);
+    const [carCards, setCarCards] = useState([]);
+    const [carCardsPage, setCarCardsPage] = useState([]);
+    const [page, setPage] = useState(1);
+    const [allCarCards, setAllCarCards] = useState([]);
+    const [isShowToggleAdd, setIsShowToggleAdd] = useState(true);  
+
    
     
     useEffect(() => {
@@ -45,7 +48,14 @@ export default function Catalog() {
         setPage(prev => (prev + 1 ));
     }
     
-
+    const handleAddFavorite = () => {
+        console.log("Add");
+        setIsShowToggleAdd(false);
+    }
+    const handleRemoveFavorite = () => {
+        console.log("Remove");
+        setIsShowToggleAdd(true)
+    }
 
    return (
        <div>
@@ -60,11 +70,22 @@ export default function Catalog() {
                 const showAddress = address.replace(/[,]/g, '').split(' ').splice(-2)
                 const carId = nanoid();
                
-                return (
+                return (<div className={css.carsCardMainWrapper}>
                     <li key={carId} className={css.carsCardItem}>
-                    <img src={img ? `${img}` : `${photoLink}`} alt={model} className={css.imagecarsCardItem} />
-                   
-                    <div>
+                        <img src={img ? `${img}` : `${photoLink}`} alt={model} className={css.imagecarsCardItem} />
+                        {isShowToggleAdd ? 
+                        <button type="button" onClick={handleAddFavorite} className={css.btnFavorite}>
+                            <svg width="18" height="18">
+                                <use href={`${svg}#icon-heart-1`}></use>
+                            </svg>                            
+                        </button> :
+                        <button type="button"onClick={handleRemoveFavorite} className={css.btnFavorite}>
+                            <svg width="18" height="18" className={css.svgRemoveFavorite}>
+                                <use href={`${svg}#icon-heart`}></use>
+                            </svg>
+                        </button>              
+}
+
                         <div className={css.carsCardInfoTopWrap}>
                                 <p className={css.make}>{make}<span className={css.model}>{model}</span>,</p>
                                 <p className={css.year}>{year}</p>
@@ -80,8 +101,11 @@ export default function Catalog() {
                             <p className={css.carInfoText}>{id}<span className={css.borderInfoCard}></span></p>
                             <p className={css.carInfoText}>{accessories[0]}</p>
                         </div>   
-                    </div>
-                  </li>) 
+                        
+                       
+                            <button type="button" className={css.cardBtnLearnMore}>Learn more</button>
+                  
+                  </li></div>) 
             })
             }  
            </ul>
