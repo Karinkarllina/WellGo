@@ -15,12 +15,6 @@ const Filter = ({allItems}) => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         
-        console.log('click');
-        console.log('selectedCarBrand:', selectedCarBrand);
-        console.log('selectedCarPrice:', selectedCarPrice);
-        console.log('mileageValueFrom:', mileageValueFrom);
-        console.log('mileageValueTo:', mileageValueTo);
-        
         const filter = {
             make: selectedCarBrand,
             rentalPrice: selectedCarPrice,
