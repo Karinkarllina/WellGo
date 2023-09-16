@@ -128,3 +128,8 @@
   right: 10px;
   
 }
+
+.bntLoadWrap {
+  display: flex;
+  justify-content: center;
+}

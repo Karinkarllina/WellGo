@@ -110,7 +110,7 @@ export default function Catalog() {
             }  
            </ul>
            
-           {carCardsPage.length >= 8 && <LoadMore onClick={buttonLoadMore} />}
+           {carCardsPage.length >= 8 && <div className={css.bntLoadWrap}><LoadMore onClick={buttonLoadMore}/></div> }
            
      </div>
   );
