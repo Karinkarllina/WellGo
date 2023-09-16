@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/WellGo/static/css/main.32d764a6.css",
-    "main.js": "/WellGo/static/js/main.ab514928.js",
+    "main.js": "/WellGo/static/js/main.978c0eac.js",
     "static/js/983.24b593d8.chunk.js": "/WellGo/static/js/983.24b593d8.chunk.js",
     "static/css/857.e7c5182f.chunk.css": "/WellGo/static/css/857.e7c5182f.chunk.css",
-    "static/js/857.9945e22b.chunk.js": "/WellGo/static/js/857.9945e22b.chunk.js",
+    "static/js/857.d1e7cf1c.chunk.js": "/WellGo/static/js/857.d1e7cf1c.chunk.js",
     "static/js/339.9b4da462.chunk.js": "/WellGo/static/js/339.9b4da462.chunk.js",
     "static/js/805.58ad0b9c.chunk.js": "/WellGo/static/js/805.58ad0b9c.chunk.js",
     "static/js/898.49eed956.chunk.js": "/WellGo/static/js/898.49eed956.chunk.js",
     "index.html": "/WellGo/index.html",
     "main.32d764a6.css.map": "/WellGo/static/css/main.32d764a6.css.map",
-    "main.ab514928.js.map": "/WellGo/static/js/main.ab514928.js.map",
+    "main.978c0eac.js.map": "/WellGo/static/js/main.978c0eac.js.map",
     "983.24b593d8.chunk.js.map": "/WellGo/static/js/983.24b593d8.chunk.js.map",
     "857.e7c5182f.chunk.css.map": "/WellGo/static/css/857.e7c5182f.chunk.css.map",
-    "857.9945e22b.chunk.js.map": "/WellGo/static/js/857.9945e22b.chunk.js.map",
+    "857.d1e7cf1c.chunk.js.map": "/WellGo/static/js/857.d1e7cf1c.chunk.js.map",
     "339.9b4da462.chunk.js.map": "/WellGo/static/js/339.9b4da462.chunk.js.map",
     "805.58ad0b9c.chunk.js.map": "/WellGo/static/js/805.58ad0b9c.chunk.js.map",
     "898.49eed956.chunk.js.map": "/WellGo/static/js/898.49eed956.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.32d764a6.css",
-    "static/js/main.ab514928.js"
+    "static/js/main.978c0eac.js"
   ]
 }
