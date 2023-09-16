@@ -1,0 +1,161 @@
+.madalWrap {
+    width: 541px;
+    height: 752px;
+    padding: 45px 35px 15px 35px;
+    /* background: #131313; */
+}
+
+.imgCar {
+    width: 469px;
+    height: 314px;
+    border-radius: 20px;
+}
+
+.infoWrap {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.infoTopWrap {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.infoBottomWrap {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.infoCar {
+color: rgba(18, 20, 23, 0.50);
+font-family: Manrope;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+
+}
+
+.border {
+    border-right: 2px solid #c3c2c2;
+    margin-left: 10px;
+} 
+
+.nameCar {
+    color: #121417;
+    font-family: Manrope;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.33;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modelCar {
+    color: #3470FF;
+    font-family: Manrope;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.33;
+}
+
+.carDescription {
+    color: #121417;
+    font-family: Manrope;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.43;
+    margin-bottom: 24px;
+}
+
+.carDetails {
+    color: #121417;
+    font-family: Manrope;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.43;
+    margin-bottom: 8px;
+}
+
+.infoConditions {
+    margin-top: 24px;
+    margin-bottom: 15px;
+    color: #121417;
+    font-family: Manrope;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.43;
+}
+
+.conditionsTopWrap {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+ .conditionsTextIn {
+    color: #363535;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.24px;
+
+            border-radius: 35px;
+            background: #F9F9F9;
+            padding: 7px 14px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+ }
+
+ .condSapn {
+    color: #3470FF;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.24px;
+ }
+
+ .conditionsText {
+    color: #363535;
+    font-family: Manrope;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 35px;
+        background: #F9F9F9;
+        padding: 7px 14px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+ }
+
+.conditionsBottomWrap {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.buttonRent {
+    width: 168px;
+    height: 44px;
+    padding: 12px 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: #3470FF;
+    border: none;
+    cursor: pointer;
+    color:  #FFF;
+    font-family: Manrope;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.43;
+}
