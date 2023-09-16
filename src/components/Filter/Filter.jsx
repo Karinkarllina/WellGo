@@ -83,9 +83,11 @@ const Filter = ({allCarCards}) => {
                           <ul>
                               {filterMakes.map((make) => {
                                   const optId = nanoid()
-                                      return <li key={optId} onClick={() => handleBrandСlick(`${make}`)}>
+                                return (
+                                  <li key={optId} onClick={() => handleBrandСlick(`${make}`)}>
                                       {make}
                                   </li>
+                                )
                               })}
     
                     </ul>           
@@ -112,9 +114,11 @@ const Filter = ({allCarCards}) => {
                           <ul>
                               {priceArr.map((price) => {
                                   const optId = nanoid()
-                                      return <li key={optId} onClick={() => handlePriceСlick(`${price}`)}>
+                                return (
+                                  <li key={optId} onClick={() => handlePriceСlick(`${price}`)}>
                                       {price}
                                   </li>
+                                )
                               })}
                     </ul>           
                 )}
