@@ -11,7 +11,7 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 
 export const App = () => {
   return (
-    <BrowserRouter basename="/WellGo">
+    <BrowserRouter basename="/wellGo">
         <Suspense fallback={<Spinner />}>
             <Routes>
               <Route path='/' element={<Layout/>}> 
