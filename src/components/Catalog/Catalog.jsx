@@ -58,10 +58,10 @@ export default function Catalog() {
    
 
     const handleAddFavorite = (id) => {
-      const item = allCarCards.find(item => item.id === id);
-      setFavouriteCars(prev => ([...prev, item]));
-      localStorage.setItem('items', JSON.stringify(favouriteCars));
-      console.log(item);
+            const item = allCarCards.find(item => item.id === id);
+            setFavouriteCars(prev => ([...prev, item]));
+            localStorage.setItem('items', JSON.stringify(favouriteCars));
+            console.log(item);
     }
 
 
