@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/WellGo/static/css/main.8db965c9.css",
-    "main.js": "/WellGo/static/js/main.d1e44824.js",
+    "main.js": "/WellGo/static/js/main.f66c7645.js",
     "static/css/983.b57a9a5e.chunk.css": "/WellGo/static/css/983.b57a9a5e.chunk.css",
     "static/js/983.aab969a2.chunk.js": "/WellGo/static/js/983.aab969a2.chunk.js",
     "static/css/411.028cf8e0.chunk.css": "/WellGo/static/css/411.028cf8e0.chunk.css",
@@ -14,7 +14,7 @@
     "static/media/symbol-defs.svg": "/WellGo/static/media/symbol-defs.6b066baa0e6c6ae8b109f7eeee917f66.svg",
     "index.html": "/WellGo/index.html",
     "main.8db965c9.css.map": "/WellGo/static/css/main.8db965c9.css.map",
-    "main.d1e44824.js.map": "/WellGo/static/js/main.d1e44824.js.map",
+    "main.f66c7645.js.map": "/WellGo/static/js/main.f66c7645.js.map",
     "983.b57a9a5e.chunk.css.map": "/WellGo/static/css/983.b57a9a5e.chunk.css.map",
     "983.aab969a2.chunk.js.map": "/WellGo/static/js/983.aab969a2.chunk.js.map",
     "411.028cf8e0.chunk.css.map": "/WellGo/static/css/411.028cf8e0.chunk.css.map",
@@ -26,6 +26,6 @@
   },
   "entrypoints": [
     "static/css/main.8db965c9.css",
-    "static/js/main.d1e44824.js"
+    "static/js/main.f66c7645.js"
   ]
 }
