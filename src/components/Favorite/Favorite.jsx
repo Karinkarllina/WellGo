@@ -9,23 +9,23 @@ import ModalCar from "components/ModalCar/ModalCar.jsx";
 
 export default function Favourite() {
 
-    const [favourCars, setFavourCars] = useState([]);
+    const [favouriteCars, setFavouriteCars] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [idModal, setIdModal] = useState('');
     
     useEffect(() => {
-      setFavourCars(JSON.parse(localStorage.getItem('items')));  
+      setFavouriteCars(JSON.parse(localStorage.getItem('items')));  
 }, []);
 
     
    const handleRemoveFavorite = (id) => {
-     setFavourCars(favourCars.filter(item => item.id !== id));
-      localStorage.setItem('items', JSON.stringify(favourCars));
+     setFavouriteCars(favouriteCars.filter(item => item.id !== id));
+      localStorage.setItem('items', JSON.stringify(favouriteCars));
     }
 
     const modalOpen = (id) => {
           setShowModal(true);
-          const item = favourCars.find(item => item.id === id);
+          const item = favouriteCars.find(item => item.id === id);
           setIdModal(item);
 
     };
@@ -39,7 +39,7 @@ return (
        <div>
            <ul className={css.allCarsCardList}>
                
-            {favourCars && (favourCars.map(({ id, address, rentalCompany, year, type,
+            {favouriteCars && (favouriteCars.map(({ id, address, rentalCompany, year, type,
                 model, img, make, rentalPrice, accessories, photoLink }) => {
                 
                  const location = address.split(',');
