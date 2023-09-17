@@ -89,7 +89,6 @@ export default function Catalog() {
        <div>
            <Filter allCarCards={allCarCards}/>
 
-
            <ul className={css.allCarsCardList}>
                
             {carCards.map(({ id, address, rentalCompany, year, type,
