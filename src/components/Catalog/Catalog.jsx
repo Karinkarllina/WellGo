@@ -1,11 +1,13 @@
 import { React, useEffect, useState } from "react";
 import fetchCars from "../../Fetch/FetchCars.js";
 import LoadMore from '../LoadMore/LoadMore.jsx';
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import css from './Catalog.module.css'
 import Filter from "components/Filter/Filter.jsx";
 import svg from '../../images/symbol-defs.svg';
+import Modal from "components/Modal/Modal.jsx";
+import ModalCar from "components/ModalCar/ModalCar.jsx";
 
 
 
@@ -15,10 +17,10 @@ export default function Catalog() {
     const [carCardsPage, setCarCardsPage] = useState([]);
     const [page, setPage] = useState(1);
     const [allCarCards, setAllCarCards] = useState([]);
-    const [isShowToggleAdd, setIsShowToggleAdd] = useState(true);  
+    const [favourItems, setFavourItems] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
-   
-    
+
     useEffect(() => {
         fetchCars()
             .then(response => {
@@ -27,9 +29,19 @@ export default function Catalog() {
             .catch(error => {
                 Notify.info("Ooops! Not found");
             });
-    }, []);
+        setFavourItems(JSON.parse(localStorage.getItem('items'))); 
+
+        if (favourItems) {
+            setFavourItems(favourItems);
+        }
+
+    }, [favourItems]);
 
 
+
+    console.log('избр на хоме:', favourItems);
+
+    
     useEffect(() => { 
         fetchCars(page, 8)
             .then(cars => {
@@ -47,15 +59,28 @@ export default function Catalog() {
     const buttonLoadMore = () => {
         setPage(prev => (prev + 1 ));
     }
+   
+
+    const handleAddFavorite = (id) => {
+      const item = allCarCards.find(item => item.id === id);
+      setFavourItems(prev => ([...prev, item]));
+      localStorage.setItem('items', JSON.stringify(favourItems));
+      console.log(item);
+      console.log('добав в избр:', favourItems);
+    }
+
+
+    const handleRemoveFavorite = (id) => {
+        setFavourItems(favourItems.filter(item => item.id !== id));
+        localStorage.setItem('items', JSON.stringify(favourItems));
+        console.log('после удаления из избр:', favourItems);
+        
+    }
     
-    const handleAddFavorite = () => {
-        console.log("Add");
-        setIsShowToggleAdd(false);
-    }
-    const handleRemoveFavorite = () => {
-        console.log("Remove");
-        setIsShowToggleAdd(true)
-    }
+
+      const togleModal = () => {
+    setShowModal(!showModal);
+  }
 
    return (
        <div>
@@ -73,17 +98,20 @@ export default function Catalog() {
                 return (<div className={css.carsCardMainWrapper}>
                     <li key={carId} className={css.carsCardItem}>
                         <img src={img ? `${img}` : `${photoLink}`} alt={model} className={css.imagecarsCardItem} />
-                        {isShowToggleAdd ? 
-                        <button type="button" onClick={handleAddFavorite} className={css.btnFavorite}>
+
+                        {favourItems.find(item => item.id === id) ?
+                            (
+                        <button type="button" onClick={() => handleRemoveFavorite(id)    } className={css.btnFavorite}>
                             <svg width="18" height="18">
-                                <use href={`${svg}#icon-heart-1`}></use>
-                            </svg>                            
-                        </button> :
-                        <button type="button"onClick={handleRemoveFavorite} className={css.btnFavorite}>
-                            <svg width="18" height="18" className={css.svgRemoveFavorite}>
                                 <use href={`${svg}#icon-heart`}></use>
+                            </svg>                            
+                                </button>
+                            ) :
+                        (<button type="button" onClick={() => handleAddFavorite(id)  } className={css.btnFavorite}>
+                            <svg width="18" height="18" className={css.svgRemoveFavorite}>
+                                <use href={`${svg}#icon-heart-1`}></use>
                             </svg>
-                        </button>              
+                        </button>)              
 }
 
                         <div className={css.carsCardInfoTopWrap}>
@@ -103,15 +131,20 @@ export default function Catalog() {
                         </div>   
                         
                        
-                            <button type="button" className={css.cardBtnLearnMore}>Learn more</button>
+                            <button type="button" className={css.cardBtnLearnMore} onClick={togleModal}>Learn more</button>
                   
-                  </li></div>) 
+                    </li>
+                </div>) 
             })
             }  
            </ul>
            
            {carCardsPage.length >= 8 && <div className={css.bntLoadWrap}><LoadMore onClick={buttonLoadMore}/></div> }
-           
+            {showModal && (
+                <Modal onClose={togleModal}>
+                   <ModalCar />   
+                </Modal>
+            )}  
      </div>
   );
 }

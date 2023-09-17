@@ -60,6 +60,8 @@ const Filter = ({allCarCards}) => {
         const value = event.target.value;
         setMileageValueTo(value);
    }
+
+  
     
       return (
       <div className={css.formWrap}>

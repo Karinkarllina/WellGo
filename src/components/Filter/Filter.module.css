@@ -141,3 +141,91 @@
     border-radius: 14px;
     font-family: Manrope;
 }
+
+
+.brandList {
+    background-color: #F7F7FB;
+    width: 180px;
+    height: 250px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #F7F7FB;
+    padding: 18px 44px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    position: absolute;
+    top: 101%;
+    left: 1%;
+    z-index: 999999;
+    overflow-x: auto;
+}
+
+.brandList::-webkit-scrollbar {
+     width: 8px;
+}
+    
+.brandList::-webkit-scrollbar-track {
+    background: rgb(137, 137, 163);
+}
+    
+.brandList::-webkit-scrollbar-thumb {
+    background-color: rgb(69, 69, 102);
+    border-radius: 20px;
+    border: 1px solid rgb(137, 137, 163);
+}
+
+
+
+
+.priceList {
+    background-color: #F7F7FB;
+    width: 180px;
+    height: 250px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #F7F7FB;
+    padding: 18px 44px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    position: absolute;
+    top: 101%;
+    left: 1%;
+    z-index: 999999;
+    overflow-x: auto;
+}
+
+.priceList::-webkit-scrollbar {
+    width: 8px;
+}
+
+.priceList::-webkit-scrollbar-track {
+    background: rgb(137, 137, 163);
+}
+
+.priceList::-webkit-scrollbar-thumb {
+    background-color: rgb(69, 69, 102);
+    border-radius: 20px;
+    border: 1px solid rgb(137, 137, 163);
+}
+
+.brandItem {
+    margin-bottom: 8px;
+    color: rgba(18, 20, 23, 0.20);
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.priceItem {
+    margin-bottom: 8px;
+    color: rgba(18, 20, 23, 0.20);
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+}
