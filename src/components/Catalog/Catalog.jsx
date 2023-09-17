@@ -46,6 +46,7 @@ export default function Catalog() {
                 setCarCards(prev => [...prev, ...cars.data]);
         })
             .catch(error => {
+                console.log(error);
                 Notify.info("Ooops! Not found");
             });
     }, [page]);

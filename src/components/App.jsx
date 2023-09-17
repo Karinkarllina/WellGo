@@ -9,7 +9,6 @@ const FavoritePage = lazy(() => import('../pages/FavoritePage'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 
-
 export const App = () => {
   return (
         <Suspense fallback={<Spinner />}>
@@ -23,6 +22,5 @@ export const App = () => {
               </Route>
           </Routes>
         </Suspense>
-
   );
 };
