@@ -39,7 +39,7 @@ return (
        <div>
            <ul className={css.allCarsCardList}>
                
-            {favourCars.map(({ id, address, rentalCompany, year, type,
+            {favourCars && (favourCars.map(({ id, address, rentalCompany, year, type,
                 model, img, make, rentalPrice, accessories, photoLink }) => {
                 
                  const location = address.split(',');
@@ -76,7 +76,7 @@ return (
                   
                   </li></div>) 
             })
-            }  
+           ) }  
            </ul>
             {showModal && (
                 <Modal onClose={modalClose}>
