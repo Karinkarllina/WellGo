@@ -101,7 +101,7 @@ export default function Catalog() {
                     <li key={carId} className={css.carsCardItem}>
                         <img src={img ? `${img}` : `${photoLink}`} alt={model} className={css.imagecarsCardItem} />
 
-                        {favouriteCars && (
+                        {
                             favouriteCars.find(item => item.id === id) ?
                                 (
                                     <button type="button" onClick={() => handleRemoveFavorite(id)} className={css.btnFavorite}>
@@ -115,7 +115,7 @@ export default function Catalog() {
                                         <use href={`${svg}#icon-heart-1`}></use>
                                     </svg>
                                 </button>)
-                        )}
+                        }
 
                         <div className={css.carsCardInfoTopWrap}>
                                 <p className={css.make}>{make}<span className={css.model}>{model}</span>,</p>
