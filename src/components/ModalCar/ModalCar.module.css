@@ -153,7 +153,7 @@ font-family: Manrope;
 
 .buttonRent {
     width: 168px;
-    height: 30px;
+    height: 44px;
     padding: 12px;
     display: flex;
     justify-content: center;
@@ -162,14 +162,17 @@ font-family: Manrope;
     background: #3470FF;
     border: none;
     cursor: pointer;
-    color:  #FFF;
-    font-family: Manrope;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.43;
+    
 }
 
 .btnRentWrap {
     display: flex;
     justify-content: center;
+}
+.btnLink {
+color: #FFFF;
+    font-family: Manrope;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.43;
 }

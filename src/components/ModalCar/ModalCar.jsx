@@ -58,7 +58,10 @@ const ModalCar = ({ data }) => {
                 <p className={css.conditionsText}>Price: <span className={css.condSapn}>{rentalPrice}</span></p>
             </div>
             <div className={css.btnRentWrap}>
-            <a href="tel:+380730000000" className={css.buttonRent}>Rental car</a>
+                <button 
+                type="button" className={css.buttonRent} >
+                    <a href="tel:+380730000000" className={css.btnLink} >Rental car</a>
+                </button>
             </div>
             
         </div>
