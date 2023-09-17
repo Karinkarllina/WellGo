@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, BrowserRouter } from 'react-router-dom';
 import Spinner from './Spinner/Spinner';
 import Layout from './Layout/Layout';
 
@@ -11,6 +11,7 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 
 export const App = () => {
   return (
+    <BrowserRouter basename="/WellGo">
         <Suspense fallback={<Spinner />}>
             <Routes>
               <Route path='/' element={<Layout/>}> 
@@ -21,6 +22,7 @@ export const App = () => {
                 <Route path='*' element={<NotFound/>} />  
               </Route>
           </Routes>
-        </Suspense>
+      </Suspense>
+      </BrowserRouter>
   );
 };
