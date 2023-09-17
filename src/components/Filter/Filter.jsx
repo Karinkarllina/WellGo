@@ -1,6 +1,7 @@
-// import css from './Filter.module.css';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
+import css from './Filter.module.css';
+import svg from '../../images/symbol-defs.svg';
 
 const Filter = ({allCarCards}) => {
 
@@ -61,61 +62,70 @@ const Filter = ({allCarCards}) => {
    }
     
       return (
-      <div >
-        <form onSubmit={handleFormSubmit}>
-          <div>
-            <label htmlFor="brand">Car brand</label>
+      <div className={css.formWrap}>
+        <form onSubmit={handleFormSubmit} className={css.form}>
+            <div className={css.brandWrap}>
+            <label htmlFor="brand" className={css.labelBrand}>Car brand</label>
             <input
                 type="text"
                 name='brand'
                 id='brand'
                 placeholder="Enter the text"    
                 value={selectedCarBrand}
-                onChange={(event) => setSelectedCarBrand(event.target.value)}            
+                onChange={(event) => setSelectedCarBrand(event.target.value)}
+                className={css.inputBrand}
             />
             <button
               type="button"
               aria-label="arrow"
-              onClick={() => setIsOpenBrands(!isOpenBrands)}
-            >
+                onClick={() => setIsOpenBrands(!isOpenBrands)}
+                className={css.buttonOpenBrand}
+              >
+                <svg width="20" height="20" className={css.svgOpen}>
+                    <use href={`${svg}#icon-chevron-down`}></use>
+                </svg>  
             </button>
                 {isOpenBrands && (
-                          <ul>
+                          <ul className={css.brandList}>
                               {filterMakes.map((make) => {
                                   const optId = nanoid()
                                 return (
-                                  <li key={optId} onClick={() => handleBrandСlick(`${make}`)}>
+                                  <li key={optId} onClick={() => handleBrandСlick(`${make}`)} className={css.brandItem}>
                                       {make}
                                   </li>
                                 )
                               })}
-    
                     </ul>           
                 )}
         </div>
 
-        <div>
-          <label htmlFor="price">Price/ 1 hour</label>
+        <div className={css.priceWrap}>
+          <label htmlFor="price" className={css.labelPrice}>Price/ 1 hour</label>
           <input
             type="text"
             name='price'
             id='price'
             placeholder="To $"
             value={selectedCarPrice}
-            onChange={(event) => setSelectedCarPrice(event.target.value)} 
+                onChange={(event) => setSelectedCarPrice(event.target.value)}
+            className={css.inputPrice}    
           />
             <button
                 type="button"
                 aria-label="arrow"
                 onClick={() => setIsOpenPrice(!isOpenPrice)}
-            >
+                className={css.buttonOpenPrice}
+              >
+                <svg width="20" height="20" className={css.svgOpen}>
+                    <use href={`${svg}#icon-chevron-down`}></use>
+                </svg>  
             </button>
                 {isOpenPrice && (
-                          <ul>
+                          <ul className={css.priceList}>
                               {priceArr.map((price) => {
                                   const optId = nanoid()
                                 return (
-                                  <li key={optId} onClick={() => handlePriceСlick(`${price}`)}>
+                                  <li key={optId} onClick={() => handlePriceСlick(`${price}`)} className={css.priceItem}>
                                       {price}
                                   </li>
                                 )
@@ -124,8 +134,9 @@ const Filter = ({allCarCards}) => {
                 )}
           </div>
 
-        <div>
-          <label htmlFor="price">Сar mileage / km</label>
+        <div className={css.mileageWrap}>
+              <label htmlFor="mileage" className={css.mileageLabel}>Сar mileage / km</label>
+              <div className={css.inputWrap}>
           <input 
             type="number" 
             id='mileage'
@@ -133,6 +144,7 @@ const Filter = ({allCarCards}) => {
             placeholder="From"
             value={mileageValueFrom}
             onChange={hadleMileageValueFromChange} 
+            className={css.mileageInputFrom}
           />
           <input 
             type="number" 
@@ -140,13 +152,14 @@ const Filter = ({allCarCards}) => {
             name="mileageTo" 
             placeholder="To"
             value={mileageValueTo}
-            onChange={hadleMileageValueToChange} 
+            onChange={hadleMileageValueToChange}
+            className={css.mileageInputTo}    
           /> 
         </div>    
-           
-        <button type="submit">Search</button>
+           </div>
+        <button type="submit" className={css.buttonSearchFilter}>Search</button>
         </form>
-          </div>
+        </div>
           
   );
 }

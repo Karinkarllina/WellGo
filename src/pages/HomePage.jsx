@@ -1,13 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import css from './pages.module.css'
+
 
 const HomePage = () => {
 
     return (
-        <div>
-            <p>Hello! Its HomePage!</p>
-            <p>
-                <NavLink to="/catalog">Link CatalogPage</NavLink>
-            </p>
+        <div className={css.catalogSection}>
+            <h1 className={css.mainText}>Luxury Car Rentals</h1>
         </div>
     )
 }
