@@ -17,7 +17,7 @@ export default function Catalog() {
     const [carCardsPage, setCarCardsPage] = useState([]);
     const [page, setPage] = useState(1);
     const [allCarCards, setAllCarCards] = useState([]);
-    const [favouriteCars, setFavouriteCars] = useState([]);
+    const [favouriteCars, setFavouriteCars] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [idModal, setIdModal] = useState('');
 
