@@ -36,7 +36,7 @@ export default function Catalog() {
             setFavouriteCars(favouriteCars);
         }
 
-    }, [favouriteCars]);
+    }, []);
 
 
     useEffect(() => { 
@@ -62,6 +62,8 @@ export default function Catalog() {
             setFavouriteCars(prev => ([...prev, item]));
             localStorage.setItem('items', JSON.stringify(favouriteCars));
             console.log(item);
+       
+
     }
 
 
@@ -100,7 +102,7 @@ export default function Catalog() {
                     <li key={carId} className={css.carsCardItem}>
                         <img src={img ? `${img}` : `${photoLink}`} alt={model} className={css.imagecarsCardItem} />
 
-                        {favouriteCars.find(item => item.id === id) ?
+                         {favouriteCars.find(item => item.id === id) ?
                             (
                         <button type="button" onClick={() => handleRemoveFavorite(id)    } className={css.btnFavorite}>
                             <svg width="18" height="18">
