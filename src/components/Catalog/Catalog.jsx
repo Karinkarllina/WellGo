@@ -32,11 +32,9 @@ export default function Catalog() {
             });
         setFavouriteCars(JSON.parse(localStorage.getItem('items'))); 
 
-        if (favouriteCars) {
-            setFavouriteCars(favouriteCars);
-        }
 
-    }, [favouriteCars]);
+
+    }, []);
 
 
     useEffect(() => { 
