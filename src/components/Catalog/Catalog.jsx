@@ -31,12 +31,7 @@ export default function Catalog() {
                 Notify.info("Ooops! Not found");
             });
         setFavouriteCars(JSON.parse(localStorage.getItem('items'))); 
-
-        if (favouriteCars) {
-            setFavouriteCars(favouriteCars);
-        }
-
-    }, [favouriteCars]);
+    }, []);
 
 
     useEffect(() => { 
@@ -101,8 +96,7 @@ export default function Catalog() {
                     <li key={carId} className={css.carsCardItem}>
                         <img src={img ? `${img}` : `${photoLink}`} alt={model} className={css.imagecarsCardItem} />
 
-                        {
-                            favouriteCars.find(item => item.id === id) ?
+                        {favouriteCars.find(item => item.id === id) ?
                                 (
                                     <button type="button" onClick={() => handleRemoveFavorite(id)} className={css.btnFavorite}>
                                         <svg width="18" height="18">
@@ -145,7 +139,7 @@ export default function Catalog() {
            {carCardsPage.length >= 8 && <div className={css.bntLoadWrap}><LoadMore onClick={buttonLoadMore}/></div> }
             {showModal && (
                 <Modal onClose={modalClose}>
-                           <ModalCar data={idModal}/>
+                    <ModalCar data={idModal}/>
                 </Modal>
             )}  
      </div>
