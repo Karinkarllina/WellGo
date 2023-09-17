@@ -13,18 +13,10 @@ const Filter = ({allCarCards}) => {
     const [mileageValueTo, setMileageValueTo] = useState('');
 
 
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
+    // const handleFormSubmit = (event) => {
+    //     event.preventDefault();
         
-        const filter = {
-            make: selectedCarBrand,
-            rentalPrice: selectedCarPrice,
-            mileageFrom: mileageValueFrom,
-            mileageTo: mileageValueTo,
-
-        }
-        localStorage.setItem('filter', JSON.stringify(filter));
-    }
+    // }
     
     const filterMakes = allCarCards.map(item => item.make)
         .filter((make, index, array) => array
@@ -60,12 +52,10 @@ const Filter = ({allCarCards}) => {
         const value = event.target.value;
         setMileageValueTo(value);
    }
-
-  
     
       return (
       <div className={css.formWrap}>
-        <form onSubmit={handleFormSubmit} className={css.form}>
+        <form className={css.form}>
             <div className={css.brandWrap}>
             <label htmlFor="brand" className={css.labelBrand}>Car brand</label>
             <input

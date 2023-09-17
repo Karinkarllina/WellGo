@@ -10,13 +10,21 @@
     width: 420px;
     height: 280px;
     border-radius: 20px;
+
+}
+
+.imageWrapper {
+    display: flex;
+    justify-content: center;
 }
 
 .infoWrap {
     display: flex;
     flex-direction: column;
-
+    width: auto;
+    height: auto;
 }
+
 
 .infoTopWrap {
     display: flex;

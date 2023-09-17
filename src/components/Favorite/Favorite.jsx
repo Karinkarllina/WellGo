@@ -1,44 +1,55 @@
 import { React, useEffect, useState } from "react";
 import { nanoid } from 'nanoid';
-import css from '../Catalog/Catalog.module.css'
-import svg from '../../images/symbol-defs.svg'
+import css from '../Catalog/Catalog.module.css';
+import svg from '../../images/symbol-defs.svg';
+import Modal from "components/Modal/Modal.jsx";
+import ModalCar from "components/ModalCar/ModalCar.jsx";
 
 
 
 export default function Favourite() {
 
-    const [favourItems, setFavourItems] = useState([]);
+    const [favourCars, setFavourCars] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [idModal, setIdModal] = useState('');
     
     useEffect(() => {
-      setFavourItems(JSON.parse(localStorage.getItem('items')));  
+      setFavourCars(JSON.parse(localStorage.getItem('items')));  
 }, []);
- console.log('на избранных:', favourItems);
-
 
     
-    
-   const handleBtnFavRemoveClick = (id) => {
-     setFavourItems(favourItems.filter(item => item.id !== id));
-      localStorage.setItem('items', JSON.stringify(favourItems));
-         console.log('после удаления из избр:', favourItems);
+   const handleRemoveFavorite = (id) => {
+     setFavourCars(favourCars.filter(item => item.id !== id));
+      localStorage.setItem('items', JSON.stringify(favourCars));
     }
-    
+
+    const modalOpen = (id) => {
+          setShowModal(true);
+          const item = favourCars.find(item => item.id === id);
+          setIdModal(item);
+
+    };
+
+  const modalClose = () => {
+    setShowModal(false);
+    };
+
 
 return (
        <div>
            <ul className={css.allCarsCardList}>
                
-            {favourItems.map(({ id, address, rentalCompany, year, type,
+            {favourCars.map(({ id, address, rentalCompany, year, type,
                 model, img, make, rentalPrice, accessories, photoLink }) => {
                 
-                const showAddress = address.replace(/[,]/g, '').split(' ').splice(-2)
+                 const location = address.split(',');
                 const carId = nanoid();
                
                 return (<div className={css.carsCardMainWrapper}>
                     <li key={carId} className={css.carsCardItem}>
                         <img src={img ? `${img}` : `${photoLink}`} alt={model} className={css.imagecarsCardItem} />
                         
-                        <button type="button"  onClick={() => handleBtnFavRemoveClick(id)} className={css.btnFavorite}>
+                        <button type="button"  onClick={() => handleRemoveFavorite(id)} className={css.btnFavorite}>
                             <svg width="18" height="18" className={css.svgRemoveFavorite}>
                                 <use href={`${svg}#icon-heart`}></use>
                             </svg>
@@ -50,8 +61,8 @@ return (
                                 <p className={css.price}>{rentalPrice}</p>
                         </div>
                         <div className={css.carsCardInfoWrap}>
-                            <p className={css.carInfoText}>{showAddress.splice(0)} <span className={css.borderInfoCard}></span></p>
-                            <p className={css.carInfoText}>{showAddress.splice(1)} </p>
+                            <p className={css.carInfoText}>{location[1]} <span className={css.borderInfoCard}></span></p>
+                            <p className={css.carInfoText}>{location[2]} </p>
                             <p className={css.carInfoText}>{rentalCompany} </p>
                         </div>
                         <div className={css.carsCardInfoBottomWrap}>
@@ -61,13 +72,17 @@ return (
                         </div>   
                         
                        
-                            <button type="button" className={css.cardBtnLearnMore}>Learn more</button>
+                        <button type="button" className={css.cardBtnLearnMore} onClick={() => modalOpen(id)}>Learn more</button>
                   
                   </li></div>) 
             })
             }  
            </ul>
-           
+            {showModal && (
+                <Modal onClose={modalClose}>
+                    <ModalCar data={idModal}/>
+                </Modal>
+            )}  
            
      </div>
   );

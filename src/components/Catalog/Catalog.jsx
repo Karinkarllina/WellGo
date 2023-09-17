@@ -17,8 +17,9 @@ export default function Catalog() {
     const [carCardsPage, setCarCardsPage] = useState([]);
     const [page, setPage] = useState(1);
     const [allCarCards, setAllCarCards] = useState([]);
-    const [favourItems, setFavourItems] = useState([]);
+    const [favouriteCars, setFavouriteCars] = useState();
     const [showModal, setShowModal] = useState(false);
+    const [idModal, setIdModal] = useState('');
 
 
     useEffect(() => {
@@ -29,19 +30,15 @@ export default function Catalog() {
             .catch(error => {
                 Notify.info("Ooops! Not found");
             });
-        setFavourItems(JSON.parse(localStorage.getItem('items'))); 
+        setFavouriteCars(JSON.parse(localStorage.getItem('items'))); 
 
-        if (favourItems) {
-            setFavourItems(favourItems);
+        if (favouriteCars) {
+            setFavouriteCars(favouriteCars);
         }
 
-    }, [favourItems]);
+    }, [favouriteCars]);
 
 
-
-    console.log('избр на хоме:', favourItems);
-
-    
     useEffect(() => { 
         fetchCars(page, 8)
             .then(cars => {
@@ -49,7 +46,6 @@ export default function Catalog() {
                 setCarCards(prev => [...prev, ...cars.data]);
         })
             .catch(error => {
-                console.log(error)
                 Notify.info("Ooops! Not found");
             });
     }, [page]);
@@ -63,24 +59,29 @@ export default function Catalog() {
 
     const handleAddFavorite = (id) => {
       const item = allCarCards.find(item => item.id === id);
-      setFavourItems(prev => ([...prev, item]));
-      localStorage.setItem('items', JSON.stringify(favourItems));
+      setFavouriteCars(prev => ([...prev, item]));
+      localStorage.setItem('items', JSON.stringify(favouriteCars));
       console.log(item);
-      console.log('добав в избр:', favourItems);
     }
 
 
     const handleRemoveFavorite = (id) => {
-        setFavourItems(favourItems.filter(item => item.id !== id));
-        localStorage.setItem('items', JSON.stringify(favourItems));
-        console.log('после удаления из избр:', favourItems);
+        setFavouriteCars(favouriteCars.filter(item => item.id !== id));
+        localStorage.setItem('items', JSON.stringify(favouriteCars));
         
     }
     
+      const modalOpen = (id) => {
+          setShowModal(true);
+          const item = allCarCards.find(item => item.id === id);
+          setIdModal(item);
 
-      const togleModal = () => {
-    setShowModal(!showModal);
-  }
+    };
+
+  const modalClose = () => {
+    setShowModal(false);
+    };
+    
 
    return (
        <div>
@@ -92,14 +93,14 @@ export default function Catalog() {
             {carCards.map(({ id, address, rentalCompany, year, type,
                 model, img, make, rentalPrice, accessories, photoLink }) => {
                 
-                const showAddress = address.replace(/[,]/g, '').split(' ').splice(-2)
+                 const location = address.split(',');
                 const carId = nanoid();
                
                 return (<div className={css.carsCardMainWrapper}>
                     <li key={carId} className={css.carsCardItem}>
                         <img src={img ? `${img}` : `${photoLink}`} alt={model} className={css.imagecarsCardItem} />
 
-                        {favourItems.find(item => item.id === id) ?
+                        {favouriteCars.find(item => item.id === id) ?
                             (
                         <button type="button" onClick={() => handleRemoveFavorite(id)    } className={css.btnFavorite}>
                             <svg width="18" height="18">
@@ -120,8 +121,8 @@ export default function Catalog() {
                                 <p className={css.price}>{rentalPrice}</p>
                         </div>
                         <div className={css.carsCardInfoWrap}>
-                            <p className={css.carInfoText}>{showAddress.splice(0)} <span className={css.borderInfoCard}></span></p>
-                            <p className={css.carInfoText}>{showAddress.splice(1)} </p>
+                            <p className={css.carInfoText}>{location[1]} <span className={css.borderInfoCard}></span></p>
+                            <p className={css.carInfoText}>{location[2]} <span className={css.borderInfoCard}></span></p>
                             <p className={css.carInfoText}>{rentalCompany} </p>
                         </div>
                         <div className={css.carsCardInfoBottomWrap}>
@@ -131,7 +132,7 @@ export default function Catalog() {
                         </div>   
                         
                        
-                            <button type="button" className={css.cardBtnLearnMore} onClick={togleModal}>Learn more</button>
+                            <button type="button" className={css.cardBtnLearnMore} onClick={() => modalOpen(id)}>Learn more</button>
                   
                     </li>
                 </div>) 
@@ -141,8 +142,8 @@ export default function Catalog() {
            
            {carCardsPage.length >= 8 && <div className={css.bntLoadWrap}><LoadMore onClick={buttonLoadMore}/></div> }
             {showModal && (
-                <Modal onClose={togleModal}>
-                   <ModalCar />   
+                <Modal onClose={modalClose}>
+                           <ModalCar data={idModal}/>
                 </Modal>
             )}  
      </div>
