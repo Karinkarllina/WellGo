@@ -32,11 +32,11 @@ export default function Catalog() {
             });
         setFavouriteCars(JSON.parse(localStorage.getItem('items'))); 
 
-        // if (favouriteCars) {
-        //     setFavouriteCars(favouriteCars);
-        // }
+        if (favouriteCars) {
+            setFavouriteCars(favouriteCars);
+        }
 
-    }, []);
+    }, [favouriteCars]);
 
 
     useEffect(() => { 
@@ -62,7 +62,6 @@ export default function Catalog() {
             const item = allCarCards.find(item => item.id === id);
             setFavouriteCars(prev => ([...prev, item]));
             localStorage.setItem('items', JSON.stringify(favouriteCars));
-            console.log(item);
        
 
     }
@@ -102,20 +101,21 @@ export default function Catalog() {
                     <li key={carId} className={css.carsCardItem}>
                         <img src={img ? `${img}` : `${photoLink}`} alt={model} className={css.imagecarsCardItem} />
 
-                         {favouriteCars.find(item => item.id === id) ?
-                            (
-                        <button type="button" onClick={() => handleRemoveFavorite(id)    } className={css.btnFavorite}>
-                            <svg width="18" height="18">
-                                <use href={`${svg}#icon-heart`}></use>
-                            </svg>                            
-                                </button>
-                            ) :
-                        (<button type="button" onClick={() => handleAddFavorite(id)  } className={css.btnFavorite}>
-                            <svg width="18" height="18" className={css.svgRemoveFavorite}>
-                                <use href={`${svg}#icon-heart-1`}></use>
-                            </svg>
-                        </button>)              
-}
+                        {favouriteCars && (
+                            favouriteCars.find(item => item.id === id) ?
+                                (
+                                    <button type="button" onClick={() => handleRemoveFavorite(id)} className={css.btnFavorite}>
+                                        <svg width="18" height="18">
+                                            <use href={`${svg}#icon-heart`}></use>
+                                        </svg>
+                                    </button>
+                                ) :
+                                (<button type="button" onClick={() => handleAddFavorite(id)} className={css.btnFavorite}>
+                                    <svg width="18" height="18" className={css.svgRemoveFavorite}>
+                                        <use href={`${svg}#icon-heart-1`}></use>
+                                    </svg>
+                                </button>)
+                        )}
 
                         <div className={css.carsCardInfoTopWrap}>
                                 <p className={css.make}>{make}<span className={css.model}>{model}</span>,</p>
