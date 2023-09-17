@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[983],{983:function(e,a,t){t.r(a);var c=t(33),n=t(184);a.default=function(){return(0,n.jsx)("div",{className:c.Z.catalogSection,children:(0,n.jsx)("h1",{className:c.Z.mainText,children:"Luxury Car Rentals"})})}},33:function(e,a){a.Z={catalogSection:"pages_catalogSection__DPlZs",mainText:"pages_mainText__oS9m7"}}}]);
+//# sourceMappingURL=983.aab969a2.chunk.js.map
