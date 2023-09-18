@@ -30,7 +30,9 @@ export default function Catalog() {
             .catch(error => {
                 Notify.info("Ooops! Not found");
             });
-        setFavouriteCars(JSON.parse(localStorage.getItem('items'))); 
+        const storeCarsCards = JSON.parse(localStorage.getItem('items'));
+       storeCarsCards ? setFavouriteCars(JSON.parse(localStorage.getItem('items')))
+          : setFavouriteCars([]);
     }, []);
 
 
